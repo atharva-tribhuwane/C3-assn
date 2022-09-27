@@ -4,11 +4,18 @@ const cors = require("cors");
 const app = express();
 const port = process.env.PORT;
 const {ConnectDatabase} = require("./database/index");
-const {registeruser} = require("./controllers/user");
+const {registerstudent,loginstudent}  = require("./controllers/students");
+const {registeradmin,loginadmin}  = require("./controllers/admin");
+const {registerteacher,loginteacher}  = require("./controllers/teacher");
 // app.use(cors);
 app.use(express.json());
 
-app.post("/register",registeruser);
+app.post("/admin/register",registeradmin);
+app.post("/admin/login",loginadmin);
+app.post("/teacher/register",registerteacher);
+app.post("/teacher/login",loginteacher);
+app.post("/student/register",registerstudent);
+app.post("/student/login",loginstudent);
 
 
 
