@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { Schema, model } = mongoose;
 const CourseSchema = new Schema({
-    id: String,
+    course_id:String,
     title:{
         type:String,
         required:true
@@ -14,7 +14,12 @@ const CourseSchema = new Schema({
         type: String,
         required: true
     },
+    instructor_id:{
+        type:String,
+        required:true
+    },
     docs:[Object],
+    subscribers:[String],
     course_rating:Number
 
 })
