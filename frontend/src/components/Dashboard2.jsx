@@ -8,12 +8,13 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Adduser } from './Adduser';
 import { LoginContext } from "../context/LoginContext";
+import { Addcourse } from './Addcourse';
 export const Dashboard2 = () => {
   const { token, usertype,id } = React.useContext(LoginContext);
   console.log(id);
   const [list, setList] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
-  const [addcourse, setAddcourse] = React.useState(false);
+  const [addcourse, setAddcourse] = React.useState(true);
   function getCourses() {
     console.log("insidefunction");
     setLoading(true);
@@ -45,21 +46,22 @@ export const Dashboard2 = () => {
     getCourses();
   }, [token])
   return (
-    <div style={{marginTop:"5"}}>
+    <div style={{marginTop:"10%",display:"flex", justifyContent:"center",width:"100%",}}>
+      
       {
         loading ? <div>Loading...</div>
-          : <div>
+          : <div style={{width:"80%"}} >
             {
               token !== null && usertype === "teacher" ?
                 <div>
-                  <div>
-                    <button onClick={() => setAddcourse(!addcourse)}>Add Course</button>
+                  <div  style={{display:"flex", justifyContent:"flex-end"}}>
+                    <button style={{width:"8%", backgroundColor:"rgb(94, 94, 234)", color:"white", fontWeight:"700", border:"none", padding:"0.5%", borderRadius:"4px", marginTop:"2%"}} onClick={() => setAddcourse(!addcourse)}>Add Course</button>
                   </div>
                   {
-                    addcourse ? <div><Adduser></Adduser></div> : null
+                    addcourse ? <div><Addcourse></Addcourse></div> : null
                   }
                   <div>
-                    <h1>Your Courses List</h1>
+                    <h1 style={{textAlign:"start"}}> Courses Taught By You</h1>
                     <TableContainer component={Paper}>
                       <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
                         <TableHead>
@@ -84,7 +86,7 @@ export const Dashboard2 = () => {
                               <TableCell align="right">{el.title}</TableCell>
                               {/* <TableCell align="right">{el.instructor_name}</TableCell> */}
                               <TableCell align="right" style={{textDecoration:"underline",color:"blue"}}>ViewDetails/Add Docs </TableCell>
-                              <TableCell align="right"><button onClick={()=>handledelete(el.course_id)}>Delete</button></TableCell>
+                              <TableCell align="right"style={{width:"10%"}}><button style={{width:"100%", backgroundColor:"rgb(94, 94, 234)", color:"white", fontWeight:"700", border:"none", padding:"2.5%", borderRadius:"4px", marginTop:"2%"}} onClick={()=>handledelete(el.course_id)}>Delete</button></TableCell>
                             </TableRow>
                           ))}
                         </TableBody>

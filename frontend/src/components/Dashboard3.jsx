@@ -55,14 +55,14 @@ export const Dashboard3 = () => {
     getCourses();
   }, [token])
   return (
-    <div style={{marginTop:"5%"}}>
+    <div style={{marginTop:"5%",width:"100%",display:"flex",justifyContent:"center"}}>
       {
-        loading ? <div>Loading...</div>
-          : <div>
+        loading ? <div style={{width:"100%"}}>Loading...</div>
+          : <div style={{width:"80%"}}>
             {
               token !== null && usertype === "student" ?
                 <div>
-                  <div>
+                  <div style={{display:"flex", justifyContent:"flex-end"}}>
                     <button onClick={() =>{
                         if(!showall){
                             setList(filtered);
@@ -73,13 +73,13 @@ export const Dashboard3 = () => {
                             setShowall(false);
                         }
                         
-                    }}>Show All</button>
+                    }} style={{width:"8%", backgroundColor:"rgb(94, 94, 234)", color:"white", fontWeight:"700", border:"none", padding:"0.5%", borderRadius:"4px", marginTop:"2%"}} >Show All</button>
                   </div>
                   {
                     showall ? <div></div> : null
                   }
                   <div>
-                    <h1>Your Courses List</h1>
+                    <h1 style={{textAlign:"start" }}>Your Courses List</h1>
                     <TableContainer component={Paper}>
                       <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
                         <TableHead>
@@ -88,8 +88,8 @@ export const Dashboard3 = () => {
                             <TableCell  style={{ fontWeight: "700" }}>Course_id</TableCell>
                             <TableCell align="right" style={{ fontWeight: "700" }}>Title</TableCell>
                          
-                            <TableCell align="right" style={{ fontWeight: "700" }}></TableCell>
-                            <TableCell align="right" style={{ fontWeight: "700" }}></TableCell>
+                            <TableCell align="center" style={{ fontWeight: "700" }}></TableCell>
+                            <TableCell align="cneter" style={{ fontWeight: "700" }}></TableCell>
                           </TableRow>
                         </TableHead>
                         <TableBody>
@@ -103,10 +103,10 @@ export const Dashboard3 = () => {
                               </TableCell>
                               <TableCell align="right">{el.title}</TableCell>
                              
-                              <TableCell align="right" style={{textDecoration:"underline",color:"blue"}}>{
+                              <TableCell align="center" style={{textDecoration:"underline",color:"blue"}}>{
                                     el.subscribers.includes(id)?<span>View Course Notes</span>:<span></span>
                                 }</TableCell>
-                              <TableCell align="right"><button onClick={()=>handledelete(el.course_id)}>
+                              <TableCell align="center" style={{width:"10%"}}><button style={{width:"100%", backgroundColor:"rgb(94, 94, 234)", color:"white", fontWeight:"700", border:"none", padding:"2.5%", borderRadius:"4px", marginTop:"2%"}} onClick={()=>handledelete(el.course_id)}>
                                 {
                                     el.subscribers.includes(id)?<span>Unsubscribe</span>:<span>Subscribe</span>
                                 }

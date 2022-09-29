@@ -11,7 +11,7 @@ import { LoginContext } from '../context/LoginContext';
 const drawerWidth = 240;
 function Navbar(props) {
   
-  const { token, usertype,id } = React.useContext(LoginContext);
+  const { token, usertype,id,settoken } = React.useContext(LoginContext);
   let navItems;
   if(token.length>0){
      navItems=['Logout'];
@@ -27,7 +27,13 @@ function Navbar(props) {
   };
 
   const handleclick=(item)=>{
-    navigate(`/${item}`);
+    if(item==="logout"){
+      settoken(null);
+      navigate("/");
+    }
+    else{
+      navigate(`/${item}`);
+    }
   }
  
   

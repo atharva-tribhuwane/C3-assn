@@ -22,7 +22,7 @@ export const Login = () => {
             }
         })
         .then((res)=>res.json())
-        .then((res)=>{settoken(res.token,res.data.type,res.data.id); navigate(`/${usertype}dashboard`)})
+        .then((res)=>{settoken(res.token,res.data.type,res.data.id,res.data.name); navigate(`/${usertype}dashboard`)})
         }
         catch(err){
             console.log(err);

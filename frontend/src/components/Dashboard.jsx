@@ -39,16 +39,16 @@ export const Dashboard = () => {
     getTeachers();
   }, [token])
   return (
-    <div>
+    <div style={{marginTop:"5%",width:"100%",display:"flex",justifyContent:"center"}}>
       {
         loading ? <div>Loading...</div>
-          : <div><h1>Hello World</h1>
+          : <div style={{width:"80%"}}>
             {
               token !== null && usertype === "admin" ?
                 <div>
-                  <div>
-                    <button onClick={() => setAddteacher(!addteacher)}>Add Instructor</button>
-                    <button>Manage Users</button>
+                  <div style={{display:"flex", justifyContent:"flex-end"}}>
+                    <button style={{width:"25%", backgroundColor:"rgb(94, 94, 234)", color:"white", fontWeight:"700", border:"none", padding:"0.5%", borderRadius:"4px", marginTop:"2%"}}onClick={() => setAddteacher(!addteacher)}>Add Instructor</button>
+                    {/* <button>Manage Users</button> */}
                   </div>
                   {
                     addteacher ? <div><Adduser></Adduser></div> : null
@@ -56,7 +56,7 @@ export const Dashboard = () => {
                   <div>
                     <h1>Instuctor's List</h1>
                     <TableContainer component={Paper}>
-                      <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+                      <Table sx={{ minWidth: 800 }} size="small" aria-label="a dense table">
                         <TableHead>
                           <TableRow>
                             <TableCell style={{ fontWeight: "700" }}>ID</TableCell>
@@ -80,7 +80,7 @@ export const Dashboard = () => {
                               <TableCell align="right">{el.email}</TableCell>
                               <TableCell align="right">(+91){el.phone}</TableCell>
                               <TableCell align="right">Course</TableCell>
-                              <TableCell align="right"><button onClick={()=>handledelete(el._id)}>Delete</button></TableCell>
+                              <TableCell  align="center" style={{width:"10%"}}><button  style={{width:"100%", backgroundColor:"rgb(94, 94, 234)", color:"white", fontWeight:"700", border:"none", padding:"2.5%", borderRadius:"4px", marginTop:"2%"}} onClick={()=>handledelete(el._id)}>Delete</button></TableCell>
                             </TableRow>
                           ))}
                         </TableBody>
